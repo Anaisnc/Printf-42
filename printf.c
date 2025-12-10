@@ -6,7 +6,7 @@
 /*   By: ancourt <ancourt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 14:15:53 by ancourt           #+#    #+#             */
-/*   Updated: 2025/12/10 15:01:16 by ancourt          ###   ########.fr       */
+/*   Updated: 2025/12/10 17:51:19 by ancourt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 #include <stdarg.h>
 #include <stdio.h>
 
-int	ft_putchar(int c)
+static int	ft_putchar(int c)
 {
 	unsigned char	a;
 
 	a = (unsigned char)c;
 	return (write(1, &a, 1));
 }
-int	ft_putstr(const char *s)
+static int	ft_putstr(const char *s)
 {
 	int	i;
 
@@ -36,7 +36,7 @@ int	ft_putstr(const char *s)
 	return (i);
 }
 
-int	ft_putnbr(int n)
+static int	ft_putnbr(int n)
 {
 	long	nb;
 	int		count;
@@ -60,7 +60,7 @@ int	ft_putnbr(int n)
 	return (count);
 }
 
-int	fr_print_base(unsigned int n, char *base, unsigned int base_len)
+static int	fr_print_base(unsigned int n, char *base, unsigned int base_len)
 {
 	int	count;
 
@@ -74,17 +74,17 @@ int	fr_print_base(unsigned int n, char *base, unsigned int base_len)
 		count += write(1, &base[n], 1);
 	return (count);
 }
-int	fr_print_base_void(unsigned long nb)
+static int	fr_print_base_void(unsigned long nb)
 {
 	int	count;
-	
+
 	count = 2;
 	write(1, "0x", 2);
 	count += fr_print_base(nb, "0123456789abcdef", 16);
 	return (count);
 }
 
-int	ft_display_arg(va_list list, char c)
+static int	ft_display_arg(va_list list, char c)
 {
 	if (c == '%')
 		ft_putchar('%');
@@ -142,6 +142,10 @@ int	main(void)
 	unsigned int	u;
 	unsigned int	x;
 	unsigned int	X;
+	int				result = ft_printf("format: hello\n %% = %%\n c = %c\n s =
+							%s\n p = %p\n d = %d\n i = %i\n u = %u\n x = %x\n X;
+	int				result2 = printf("format: hello\n %% = %%\n c = %c\n s =
+							%s\n p = %p\n d = %d\n i = %i\n u = %u\n x = %x\n X;
 
 	c = 'a';
 	p = "214748364";
@@ -150,11 +154,15 @@ int	main(void)
 	u = -2147483648;
 	x = -2147483648;
 	X = -2147483648;
-	ft_printf("format: hello\n %% = %%\n c = %c\n s = %s\n p = %p\n d = %d\n i = %i\n u = %u\n x = %x\n X = %X\n", c, s, p, d, i, u, x, X);
-	int result = ft_printf("format: hello\n %% = %%\n c = %c\n s = %s\n p = %p\n d = %d\n i = %i\n u = %u\n x = %x\n X = %X\n", c, s, p, d, i, u, x, X);
+	ft_printf("format: hello\n %% = %%\n c = %c\n s = %s\n p = %p\n d = %d\n i =
+		%i\n u = %u\n x = %x\n X = %X\n", c, s, p, d, i, u, x, X);
+	result = ft_printf("format: hello\n %% = %%\n c = %c\n s = %s\n p = %p\n d =
+			%d\n i = %i\n u = %u\n x = %x\n X = %X\n", c, s, p, d, i, u, x, X);
 	ft_printf("result: %d\n", result);
-	int result2 = printf("format: hello\n %% = %%\n c = %c\n s = %s\n p = %p\n d = %d\n i = %i\n u = %u\n x = %x\n X = %X\n", c, s, p, d, i, u, x, X);
-	printf("format: hello\n %% = %%\n c = %c\n s = %s\n p = %p\n d = %d\n i = %i\n u = %u\n x = %x\n X = %X\n", c, s, p, d, i, u, x, X);
+	result2 = printf("format: hello\n %% = %%\n c = %c\n s = %s\n p = %p\n d =
+			%d\n i = %i\n u = %u\n x = %x\n X = %X\n", c, s, p, d, i, u, x, X);
+	printf("format: hello\n %% = %%\n c = %c\n s = %s\n p = %p\n d = %d\n i =
+		%i\n u = %u\n x = %x\n X = %X\n", c, s, p, d, i, u, x, X);
 	printf("result2: %d\n", result2);
 	return (0);
 }
