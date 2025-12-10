@@ -6,7 +6,7 @@
 /*   By: ancourt <ancourt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 14:15:53 by ancourt           #+#    #+#             */
-/*   Updated: 2025/12/10 13:45:11 by ancourt          ###   ########.fr       */
+/*   Updated: 2025/12/10 15:01:16 by ancourt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	fr_print_base(unsigned int n, char *base, unsigned int base_len)
 		count += write(1, &base[n], 1);
 	return (count);
 }
-int	fr_print_base_void(unsigned int nb)
+int	fr_print_base_void(unsigned long nb)
 {
 	int	count;
 	
@@ -93,7 +93,7 @@ int	ft_display_arg(va_list list, char c)
 	if (c == 's')
 		return (ft_putstr(va_arg(list, const char *)));
 	if (c == 'p')
-		return ((fr_print_base_void(va_arg(list, unsigned int))));
+		return ((fr_print_base_void(va_arg(list, unsigned long))));
 	if (c == 'd')
 		return (ft_putnbr(va_arg(list, int)));
 	if (c == 'i')
@@ -144,13 +144,17 @@ int	main(void)
 	unsigned int	X;
 
 	c = 'a';
-	p = "";
-	d = -21474836488;
-	i = -21474836488;
+	p = "214748364";
+	d = -2147483648;
+	i = -2147483648;
 	u = -2147483648;
 	x = -2147483648;
 	X = -2147483648;
 	ft_printf("format: hello\n %% = %%\n c = %c\n s = %s\n p = %p\n d = %d\n i = %i\n u = %u\n x = %x\n X = %X\n", c, s, p, d, i, u, x, X);
+	int result = ft_printf("format: hello\n %% = %%\n c = %c\n s = %s\n p = %p\n d = %d\n i = %i\n u = %u\n x = %x\n X = %X\n", c, s, p, d, i, u, x, X);
+	ft_printf("result: %d\n", result);
+	int result2 = printf("format: hello\n %% = %%\n c = %c\n s = %s\n p = %p\n d = %d\n i = %i\n u = %u\n x = %x\n X = %X\n", c, s, p, d, i, u, x, X);
 	printf("format: hello\n %% = %%\n c = %c\n s = %s\n p = %p\n d = %d\n i = %i\n u = %u\n x = %x\n X = %X\n", c, s, p, d, i, u, x, X);
+	printf("result2: %d\n", result2);
 	return (0);
 }
