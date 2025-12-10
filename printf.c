@@ -6,81 +6,151 @@
 /*   By: ancourt <ancourt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 14:15:53 by ancourt           #+#    #+#             */
-/*   Updated: 2025/12/05 19:35:15 by ancourt          ###   ########.fr       */
+/*   Updated: 2025/12/10 13:45:11 by ancourt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*returns the number of characters printed after successful execution
-error : return a negative value
-... = the variables/values corresponding to the format specifier
-const char	* = a string that specifies the data to be printedm may contain a
-format specifier.*/
-
 #include "printf.h"
 #include <stdarg.h>
+#include <stdio.h>
 
-/*exemple printf = printf("hello %d the world", nb); printf ("%s\n", "Hello world");
-parcourir la string donnée et trouver tous les %
-quand on trouver un % on va l'ajouter a notre liste*/
-
-/*arg0 = premier element de la liste.*/
-/*void	list_arg(char *arg0, ...)
+int	ft_putchar(int c)
 {
-	va_list	list;
-	size_t	nb_arg;
-	char	*current_arg;
+	unsigned char	a;
 
-	current_arg = arg0;
-	va_start(list, arg0);
-	nb_arg = 0;
-	while (current_arg)
+	a = (unsigned char)c;
+	return (write(1, &a, 1));
+}
+int	ft_putstr(const char *s)
+{
+	int	i;
+
+	if (!s)
+		return (0);
+	i = 0;
+	while (s[i])
 	{
-		current_arg = va_arg(list, char *);
-		nb_arg++;
+		write(1, &s[i], 1);
+		i++;
 	}
-	va_end(list);
-}*/
-
-//function to display the arguments
-//c = the letter after % = cspdiuxX%
-void	ft_display_arg(void *arg, char c)
-{
-	if (c == 'c')
-		ft_putchar_fd(arg, 1);
-	if (c == 's')
-		ft_putchar_fd(arg, 1);
-	if (c == 'p')
-	
-	if (c == 'd')
-		ft_putnbr_fd(arg, 1);
-	if (c == 'i')
-	
-	if (c == 'u')
-	
-	if (c == 'x')
-	
-	if (c == 'X')
-	
+	return (i);
 }
 
-
-int	ft_printf(const char *arg0, ...)
+int	ft_putnbr(int n)
 {
-	int	len;
-	va_list	list;
+	long	nb;
+	int		count;
+
+	nb = n;
+	count = 0;
+	if (nb < 0)
+	{
+		count += ft_putchar('-');
+		nb = -nb;
+	}
+	if (nb >= 10)
+	{
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
+	}
+	else
+	{
+		count += ft_putchar(nb + '0');
+	}
+	return (count);
+}
+
+int	fr_print_base(unsigned int n, char *base, unsigned int base_len)
+{
+	int	count;
+
+	count = 0;
+	if (n >= base_len)
+	{
+		fr_print_base(n / base_len, base, base_len);
+		fr_print_base(n % base_len, base, base_len);
+	}
+	else
+		count += write(1, &base[n], 1);
+	return (count);
+}
+int	fr_print_base_void(unsigned int nb)
+{
+	int	count;
 	
-	va_start(list, *arg0);
-	va_arg(list, char *);
+	count = 2;
+	write(1, "0x", 2);
+	count += fr_print_base(nb, "0123456789abcdef", 16);
+	return (count);
+}
+
+int	ft_display_arg(va_list list, char c)
+{
+	if (c == '%')
+		ft_putchar('%');
+	if (c == 'c')
+		return (ft_putchar(va_arg(list, int)));
+	if (c == 's')
+		return (ft_putstr(va_arg(list, const char *)));
+	if (c == 'p')
+		return ((fr_print_base_void(va_arg(list, unsigned int))));
+	if (c == 'd')
+		return (ft_putnbr(va_arg(list, int)));
+	if (c == 'i')
+		return (ft_putnbr(va_arg(list, int)));
+	if (c == 'u')
+		return (fr_print_base(va_arg(list, unsigned int), "0123456789", 10));
+	if (c == 'x')
+		return ((fr_print_base(va_arg(list, unsigned int), "0123456789abcdef",
+					16)));
+	if (c == 'X')
+		return ((fr_print_base(va_arg(list, unsigned int), "0123456789ABCDEF",
+					16)));
+	return (0);
+}
+
+int	ft_printf(const char *format, ...)
+{
+	int		len;
+	size_t	i;
+	va_list	list;
+
+	va_start(list, format);
+	i = 0;
+	len = 0;
+	while (format[i])
+	{
+		if (format[i] == '%')
+		{
+			len += ft_display_arg(list, format[i + 1]);
+			i = i + 2;
+		}
+		len += ft_putchar(format[i]);
+		i++;
+	}
 	va_end(list);
-	len = ft_strlen(arg0); //pas comme ca, parser la string d'abord
-	ft_putstr_fd(arg0, 1);
 	return (len);
 }
 
-
 int	main(void)
 {
-	const char	*s = "hello";
+	int				c;
+	const char		*s = "hello";
+	void			*p;
+	int				d;
+	int				i;
+	unsigned int	u;
+	unsigned int	x;
+	unsigned int	X;
 
-	ft_printf(s);
+	c = 'a';
+	p = "";
+	d = -21474836488;
+	i = -21474836488;
+	u = -2147483648;
+	x = -2147483648;
+	X = -2147483648;
+	ft_printf("format: hello\n %% = %%\n c = %c\n s = %s\n p = %p\n d = %d\n i = %i\n u = %u\n x = %x\n X = %X\n", c, s, p, d, i, u, x, X);
+	printf("format: hello\n %% = %%\n c = %c\n s = %s\n p = %p\n d = %d\n i = %i\n u = %u\n x = %x\n X = %X\n", c, s, p, d, i, u, x, X);
+	return (0);
 }
