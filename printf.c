@@ -6,7 +6,7 @@
 /*   By: ancourt <ancourt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 14:15:53 by ancourt           #+#    #+#             */
-/*   Updated: 2025/12/10 17:51:19 by ancourt          ###   ########.fr       */
+/*   Updated: 2025/12/10 17:56:38 by ancourt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static int	fr_print_base(unsigned int n, char *base, unsigned int base_len)
 static int	fr_print_base_void(unsigned long nb)
 {
 	int	count;
-
+	
 	count = 2;
 	write(1, "0x", 2);
 	count += fr_print_base(nb, "0123456789abcdef", 16);
@@ -142,10 +142,6 @@ int	main(void)
 	unsigned int	u;
 	unsigned int	x;
 	unsigned int	X;
-	int				result = ft_printf("format: hello\n %% = %%\n c = %c\n s =
-							%s\n p = %p\n d = %d\n i = %i\n u = %u\n x = %x\n X;
-	int				result2 = printf("format: hello\n %% = %%\n c = %c\n s =
-							%s\n p = %p\n d = %d\n i = %i\n u = %u\n x = %x\n X;
 
 	c = 'a';
 	p = "214748364";
@@ -154,15 +150,11 @@ int	main(void)
 	u = -2147483648;
 	x = -2147483648;
 	X = -2147483648;
-	ft_printf("format: hello\n %% = %%\n c = %c\n s = %s\n p = %p\n d = %d\n i =
-		%i\n u = %u\n x = %x\n X = %X\n", c, s, p, d, i, u, x, X);
-	result = ft_printf("format: hello\n %% = %%\n c = %c\n s = %s\n p = %p\n d =
-			%d\n i = %i\n u = %u\n x = %x\n X = %X\n", c, s, p, d, i, u, x, X);
+	ft_printf("format: hello\n %% = %%\n c = %c\n s = %s\n p = %p\n d = %d\n i = %i\n u = %u\n x = %x\n X = %X\n", c, s, p, d, i, u, x, X);
+	int result = ft_printf("format: hello\n %% = %%\n c = %c\n s = %s\n p = %p\n d = %d\n i = %i\n u = %u\n x = %x\n X = %X\n", c, s, p, d, i, u, x, X);
 	ft_printf("result: %d\n", result);
-	result2 = printf("format: hello\n %% = %%\n c = %c\n s = %s\n p = %p\n d =
-			%d\n i = %i\n u = %u\n x = %x\n X = %X\n", c, s, p, d, i, u, x, X);
-	printf("format: hello\n %% = %%\n c = %c\n s = %s\n p = %p\n d = %d\n i =
-		%i\n u = %u\n x = %x\n X = %X\n", c, s, p, d, i, u, x, X);
+	int result2 = printf("format: hello\n %% = %%\n c = %c\n s = %s\n p = %p\n d = %d\n i = %i\n u = %u\n x = %x\n X = %X\n", c, s, p, d, i, u, x, X);
+	printf("format: hello\n %% = %%\n c = %c\n s = %s\n p = %p\n d = %d\n i = %i\n u = %u\n x = %x\n X = %X\n", c, s, p, d, i, u, x, X);
 	printf("result2: %d\n", result2);
 	return (0);
 }
