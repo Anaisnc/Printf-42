@@ -6,11 +6,11 @@
 /*   By: ancourt <ancourt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 18:21:50 by ancourt           #+#    #+#             */
-/*   Updated: 2025/12/12 11:36:47 by ancourt          ###   ########.fr       */
+/*   Updated: 2025/12/12 17:09:56 by ancourt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 int	ft_putchar(int c)
 {

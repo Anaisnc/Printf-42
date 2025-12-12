@@ -6,11 +6,11 @@
 /*   By: ancourt <ancourt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 14:15:53 by ancourt           #+#    #+#             */
-/*   Updated: 2025/12/12 16:10:30 by ancourt          ###   ########.fr       */
+/*   Updated: 2025/12/12 17:09:51 by ancourt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 int	ft_display_arg(va_list list, char c)
 {
@@ -73,11 +73,17 @@ int	main(void)
 	unsigned int	x = -2147483648;
 	unsigned int	X = -2147483648;
 
-	int res1 = ft_printf("%i\n", i);
+	int res1 = ft_printf("hello %% \n %c\n %s\n %p\n %d\n %i\n %u\n %x\n %X\n", c, s, p, d, i, u, x, X);
 	printf("%d\n", res1);
 
-	int res2 = printf("%i\n", i);
-	printf("%i\n", res2);
+	int res2 = printf("hello %% \n %c\n %s\n %p\n %d\n %i\n %u\n %x\n %X\n", c, s, p, d, i, u, x, X);
+	printf("%d\n", res2);
+
+	int res1 = ft_printf("%%");
+	printf("%d\n", res1);
+
+	int res2 = printf("%%");
+	printf("%d\n", res2);
 	
 	return (0);
 }*/
