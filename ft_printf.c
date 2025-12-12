@@ -6,13 +6,12 @@
 /*   By: ancourt <ancourt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 14:15:53 by ancourt           #+#    #+#             */
-/*   Updated: 2025/12/12 15:30:50 by ancourt          ###   ########.fr       */
+/*   Updated: 2025/12/12 16:10:30 by ancourt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-//le cas ou y a une lettre derriere le % autre que celles demandées
 int	ft_display_arg(va_list list, char c)
 {
 	if (c == '%')
@@ -61,30 +60,24 @@ int	ft_printf(const char *format, ...)
 	return (len);
 }
 
-
-#include <stdio.h>
+/*#include <stdio.h>
 
 int	main(void)
 {
-	/*int				c;
-	const char		*s = "hello";*/
-	void			*p;
-	/*int				d;
-	int				i;
-	unsigned int	u;
-	unsigned int	x;
-	unsigned int	X;*/
+	int				c = 'a';
+	const char		*s = "hello";
+	void			*p = "-2147483648";
+	int				d = -2147483648;
+	int				i = -2147483648;
+	unsigned int	u = -2147483648;
+	unsigned int	x = -2147483648;
+	unsigned int	X = -2147483648;
 
-	//c = 'a';
-	p = "214748364";
-	/*d = -2147483648;
-	i = -2147483648;
-	u = -2147483648;
-	x = -2147483648;
-	X = -2147483648;*/
-
-	int res1 = ft_printf("%p", p);
+	int res1 = ft_printf("%i\n", i);
 	printf("%d\n", res1);
+
+	int res2 = printf("%i\n", i);
+	printf("%i\n", res2);
 	
 	return (0);
-}
+}*/
