@@ -6,7 +6,7 @@
 /*   By: ancourt <ancourt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 14:15:53 by ancourt           #+#    #+#             */
-/*   Updated: 2025/12/12 17:09:51 by ancourt          ###   ########.fr       */
+/*   Updated: 2025/12/12 17:18:30 by ancourt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_display_arg(va_list list, char c)
 {
 	if (c == '%')
-		ft_putchar('%');
+		return (ft_putchar('%'));
 	if (c == 'c')
 		return (ft_putchar(va_arg(list, int)));
 	if (c == 's')
@@ -36,7 +36,6 @@ int	ft_display_arg(va_list list, char c)
 					16)));
 	return (0);
 }
-
 int	ft_printf(const char *format, ...)
 {
 	int		len;
@@ -60,11 +59,11 @@ int	ft_printf(const char *format, ...)
 	return (len);
 }
 
-/*#include <stdio.h>
+#include <stdio.h>
 
 int	main(void)
 {
-	int				c = 'a';
+	/*int				c = 'a';
 	const char		*s = "hello";
 	void			*p = "-2147483648";
 	int				d = -2147483648;
@@ -77,7 +76,7 @@ int	main(void)
 	printf("%d\n", res1);
 
 	int res2 = printf("hello %% \n %c\n %s\n %p\n %d\n %i\n %u\n %x\n %X\n", c, s, p, d, i, u, x, X);
-	printf("%d\n", res2);
+	printf("%d\n", res2);*/
 
 	int res1 = ft_printf("%%");
 	printf("%d\n", res1);
@@ -86,4 +85,4 @@ int	main(void)
 	printf("%d\n", res2);
 	
 	return (0);
-}*/
+}
