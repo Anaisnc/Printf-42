@@ -8,7 +8,7 @@ CFLAGS = -Wall -Wextra -Werror -I.
 
 DEP = $(OBJ:.o=.d)
 
-NAME = printf.a
+NAME = libftprintf.a
 
 OBJ = $(SRC:.c=.o)
 
