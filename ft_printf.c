@@ -6,7 +6,7 @@
 /*   By: ancourt <ancourt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 14:15:53 by ancourt           #+#    #+#             */
-/*   Updated: 2025/12/16 15:54:02 by ancourt          ###   ########.fr       */
+/*   Updated: 2025/12/29 09:07:09 by ancourt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	ft_printf(const char *format, ...)
 	return (len);
 }
 
-/*#include <stdio.h>
+#include <stdio.h>
 
 int	main(void)
 {
@@ -93,4 +93,4 @@ int	main(void)
 	printf("%d\n", res4);
 
 	return (0);
-}*/
+}
