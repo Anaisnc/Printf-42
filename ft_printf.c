@@ -6,7 +6,7 @@
 /*   By: ancourt <ancourt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 14:15:53 by ancourt           #+#    #+#             */
-/*   Updated: 2026/01/05 08:14:03 by ancourt          ###   ########.fr       */
+/*   Updated: 2026/01/05 09:14:35 by ancourt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,50 @@ int	ft_printf(const char *format, ...)
 	}
 	va_end(list);
 	return (len);
+}
+#include <stdio.h>
+#include <limits.h>
+#include "ft_printf.h" 
+
+int	main(void)
+{
+	int	original;
+	int	crafted;
+
+	char	*str = "Hello world";
+	char	*empty_str = "";
+	char	*null_str = NULL;
+	void	*ptr = str;
+	void	*null_ptr = NULL;
+	int	n = 12;
+	int	neg = -12;
+	int	zero = 0;
+	unsigned int u = 12;
+	unsigned int u_large = 4294967295u;
+
+	original = printf("%s %s %s\n", str, empty_str, null_str);
+	crafted = printf("%s %s %s\n", str, empty_str, null_str);
+	printf("%d | %d\n\n", original, crafted);
+
+	original = printf("%d %d %d\n", n, neg, zero);
+    crafted = ft_printf("%d %d %d\n\n", n, neg, zero);
+    printf("%d | %d\n\n", original, crafted);
+
+	original = printf("%u %u\n", u, u_large);
+    crafted = ft_printf("%u %u\n\n", u, u_large);
+    printf("%d | %d\n\n", original, crafted);
+
+	original = printf("%x %X\n", u_large, u_large);
+    crafted = ft_printf("%x %X\n\n", u_large, u_large);
+    printf("%d | %d\n\n", original, crafted);
+
+	original = printf("%p %p\n", ptr, null_ptr);
+    crafted = ft_printf("%p %p\n\n", ptr, null_ptr);
+    printf("%d | %d\n\n", original, crafted);
+
+	original = printf("%%\n");
+    crafted = ft_printf("%%\n\n");
+    printf("%d | %d\n\n", original, crafted);
+
+    return (0);
 }

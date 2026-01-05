@@ -29,7 +29,7 @@ make re
 
 This produces the static library : libftprintf.a
 
-### usage
+### Usage
 
 To us the library:
 
@@ -61,12 +61,12 @@ int	main(void)
     crafted = ft_printf("%d %d %d\n\n", n, neg, zero);
     printf("%d | %d\n\n", original, crafted);
 
-	original = printf("%u %u\n", u, u_big);
-    crafted = ft_printf("%u %u\n\n", u, u_big);
+	original = printf("%u %u\n", u, u_large);
+    crafted = ft_printf("%u %u\n\n", u, u_large);
     printf("%d | %d\n\n", original, crafted);
 
-	original = printf("%x %X\n", u_big, u_big);
-    crafted = ft_printf("%x %X\n\n", u_big, u_big);
+	original = printf("%x %X\n", u_large, u_large);
+    crafted = ft_printf("%x %X\n\n", u_large, u_large);
     printf("%d | %d\n\n", original, crafted);
 
 	original = printf("%p %p\n", ptr, null_ptr);
