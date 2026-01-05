@@ -6,7 +6,7 @@
 /*   By: ancourt <ancourt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 14:15:53 by ancourt           #+#    #+#             */
-/*   Updated: 2025/12/29 09:07:09 by ancourt          ###   ########.fr       */
+/*   Updated: 2026/01/05 08:14:03 by ancourt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_display_arg(va_list list, char c)
 	if (c == 's')
 		return (ft_putstr(va_arg(list, const char *)));
 	if (c == 'p')
-		return (ft_print_base_void(va_arg(list, unsigned long)));
+		return (ft_print_base_void((unsigned long)va_arg(list, void *)));
 	if (c == 'd')
 		return (ft_putnbr(va_arg(list, int)));
 	if (c == 'i')
@@ -63,34 +63,4 @@ int	ft_printf(const char *format, ...)
 	}
 	va_end(list);
 	return (len);
-}
-
-#include <stdio.h>
-
-int	main(void)
-{
-	int				c = 'a';
-	const char		*s = "hello";
-	void			*p = "-2147483648";
-	int				d = -2147483648;
-	int				i = -2147483648;
-	unsigned int	u = -2147483648;
-	unsigned int	x = -2147483648;
-	unsigned int	X = -2147483648;
-
-	int res1 = ft_printf("hello %% \n %c\n %s\n %p\n %d\n %i\n %u\n %x\n %X\n",
-			c, s, p, d, i, u, x, X);
-	printf("%d\n", res1);
-
-	int res2 = printf("hello %% \n %c\n %s\n %p\n %d\n %i\n %u\n %x\n %X\n", c,
-			s, p, d, i, u, x, X);
-	printf("%d\n", res2);
-
-	int res3 = ft_printf("hello %");
-	printf("%d\n", res3);
-
-	int res4 = printf("hello %");
-	printf("%d\n", res4);
-
-	return (0);
 }

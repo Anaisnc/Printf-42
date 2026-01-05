@@ -1,6 +1,8 @@
-This project has been created as part of the 42 curriculum by ancourt
+This project has been created as part of the 42 curriculum by ancourt.
 
-Description
+# ft_printf
+
+## Description
 
 This project goal was to reproduce the original printf function, handling only the following conversions cspdiuxX% :
 
@@ -14,16 +16,78 @@ This project goal was to reproduce the original printf function, handling only t
 • %X Prints a number in hexadecimal (base 16) uppercase format.
 • %% Prints a percent sign.
 
-Instructions
+## Instructions
 
+### Compilation
 
+The project is compiled using the Makefile:
 
-Resources
+make
+make clean
+make fclean
+make re
 
-Web pages: 
-geeksforgeeks.org : printf-in-c
+This produces the static library : libftprintf.a
 
+### usage
+
+To us the library:
+
+#include <stdio.h>
+#include <limits.h>
+#include "ft_printf.h" 
+
+int	main(void)
+{
+	int	original;
+	int	crafted;
+
+	char	*str = "Hello world";
+	char	*empty_str = "";
+	char	*null_str = NULL;
+	void	*ptr = str;
+	void	*null_ptr = NULL;
+	int	n = 12;
+	int	neg = -12;
+	int	zero = 0;
+	unsigned int u = 12;
+	unsigned int u_large = 4294967295u;
+
+	original = printf("%s %s %s\n", str, empty_str, null_str);
+	crafted = printf("%s %s %s\n", str, empty_str, null_str);
+	printf("%d | %d\n\n", original, crafted);
+
+	original = printf("%d %d %d\n", n, neg, zero);
+    crafted = ft_printf("%d %d %d\n\n", n, neg, zero);
+    printf("%d | %d\n\n", original, crafted);
+
+	original = printf("%u %u\n", u, u_big);
+    crafted = ft_printf("%u %u\n\n", u, u_big);
+    printf("%d | %d\n\n", original, crafted);
+
+	original = printf("%x %X\n", u_big, u_big);
+    crafted = ft_printf("%x %X\n\n", u_big, u_big);
+    printf("%d | %d\n\n", original, crafted);
+
+	original = printf("%p %p\n", ptr, null_ptr);
+    crafted = ft_printf("%p %p\n\n", ptr, null_ptr);
+    printf("%d | %d\n\n", original, crafted);
+
+	original = printf("%%\n");
+    crafted = ft_printf("%%\n\n");
+    printf("%d | %d\n\n", original, crafted);
+
+    return (0);
+}
+
+## Resources
+
+### References
+
+- Documentation on printf and formatted output
+- Articles and tutorials on variadic functions in C
 Books:
 C Programming A modern Approach K.N.KING : to understand variable-length argument lists.
 
 AI:
+To help me improve explanations and structure this README.
