@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ancourt <ancourt@student.42.fr>            +#+  +:+       +#+        */
+/*   By: anaiscourt <anaiscourt@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 11:34:30 by ancourt           #+#    #+#             */
-/*   Updated: 2025/12/17 12:00:51 by ancourt          ###   ########.fr       */
+/*   Updated: 2026/01/06 19:11:41 by anaiscourt       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,5 @@ int	ft_putstr(const char *s);
 int	ft_putnbr(int n);
 int	ft_print_base_void(unsigned long nb);
 int	ft_print_base(unsigned long n, char *base, unsigned long base_len);
-int	ft_display_arg(va_list list, char c);
 
 #endif
