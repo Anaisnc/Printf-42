@@ -32,7 +32,7 @@ This produces the static library : libftprintf.a
 ### Usage
 
 To us the library:
-
+```c
 #include <stdio.h>
 #include <limits.h>
 #include "ft_printf.h" 
@@ -51,10 +51,10 @@ int	main(void)
 	int	neg = -12;
 	int	zero = 0;
 	unsigned int u = 12;
-	unsigned int u_large = 4294967295u;
+	unsigned int u_large = 4294967295;
 
 	original = printf("%s %s %s\n", str, empty_str, null_str);
-	crafted = printf("%s %s %s\n", str, empty_str, null_str);
+	crafted = ft_printf("%s %s %s\n", str, empty_str, null_str);
 	printf("%d | %d\n\n", original, crafted);
 
 	original = printf("%d %d %d\n", n, neg, zero);
@@ -79,7 +79,7 @@ int	main(void)
 
     return (0);
 }
-
+```
 ## Resources
 
 ### References

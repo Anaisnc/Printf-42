@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anaiscourt <anaiscourt@student.42.fr>      +#+  +:+       +#+        */
+/*   By: ancourt <ancourt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 14:15:53 by ancourt           #+#    #+#             */
-/*   Updated: 2026/01/06 19:11:58 by anaiscourt       ###   ########.fr       */
+/*   Updated: 2026/01/07 18:49:18 by ancourt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int	ft_printf(const char *format, ...)
 	size_t	i;
 	va_list	list;
 
+	if (!format)
+		return (-1);
 	va_start(list, format);
 	i = 0;
 	len = 0;
